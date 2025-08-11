@@ -37,7 +37,7 @@ except FileNotFoundError:
 
 # --- Streamlit App Interface ---
 
-st.title("📧 Email & SMS Spam Classifier")
+st.title("📧 Email Spam Classifier")
 st.write("Enter a message below to check if it's spam or not.")
 
 # Text area for user input
