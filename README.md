@@ -1,109 +1,95 @@
 # Email Spam Classifier 📧
-This project is a machine learning-based application designed to classify text messages (like emails or SMS) as either "Spam" or "Not Spam" (often referred to as "Ham"). It uses a Multinomial Naive Bayes model trained on a dataset of SMS messages. The project includes a Jupyter Notebook detailing the data analysis and model training process, and a user-friendly web interface built with Streamlit for real-time predictions.
+The Email/SMS Spam Classifier is a machine learning project designed to categorize text messages as either Spam or Not Spam. It utilizes a Multinomial Naive Bayes model and features a Streamlit-based web interface for real-time predictions. The project includes a Jupyter Notebook that details the data analysis, model training, and evaluation processes.
+
+## 🚀 Live Demo
+The most effective way to understand this project is to interact with it directly. The application is deployed and publicly accessible.
+
+
+[Project Demo](https://emailclassification-adnan.onrender.com/)
 
 ## 📋 Project Architecture
-The project follows a standard machine learning workflow, from data exploration to deployment. The architecture can be broken down as follows:
+The project follows a standard machine learning workflow, from data exploration to deployment. The architecture is outlined below:
 
-User Input (Message)
-       |
-       v
-[ Streamlit Web App (app.py) ]
-       |
-       v
-[ Text Preprocessing Function ]
-(Lowercase, Tokenize, Remove special chars, Remove stopwords, Stemming)
-       |
-       v
-[ TF-IDF Vectorization ]
-(Loads vectorizer.pkl)
-       |
-       v
-[ Multinomial Naive Bayes Model ]
-(Loads model.pkl)
-       |
-       v
-Prediction Output ("Spam" or "Not Spam")
+User Input (Message): The user provides a message to be classified.
+
+Streamlit Web App (app.py): The web interface for user interaction.
+
+Text Preprocessing Function: This function prepares the text for the model by performing the following steps:
+
+* Lowercase conversion
+
+* Tokenization
+
+* Removal of special characters
+
+* Removal of stopwords
+
+* Stemming
+
+* TF-IDF Vectorization: The preprocessed text is converted into a numerical format using the TF-IDF vectorizer loaded from vectorizer.pkl.
+
+* Multinomial Naive Bayes Model: The model, loaded from model.pkl, makes the prediction.
+
+* Prediction Output: The result is displayed as "Spam" or "Not Spam."
 
 ## ⚙️ Project Workflow
-The analysis and model development were carried out in the spamClassification.ipynb notebook, following these key steps:
+The analysis and model development were conducted in the spamClassification.ipynb notebook and involved the following key steps:
 
 ### 1. Data Cleaning
-Loaded the Dataset: Started with the SMS Spam Collection dataset from a .csv file.
+Dataset Loading: The SMS Spam Collection dataset was loaded from a .csv file.
 
-Removed Redundancy: Dropped irrelevant columns and removed duplicate entries to ensure data quality.
+Redundancy Removal: Irrelevant columns were dropped, and duplicate entries were removed to ensure data quality.
 
-Standardized Labels: Converted the categorical labels ('ham', 'spam') into numerical format (0 for ham, 1 for spam) using a label encoder.
+Label Standardization: The categorical labels ('ham', 'spam') were converted into numerical format (0 for ham, 1 for spam) using a label encoder.
 
 ### 2. Exploratory Data Analysis (EDA)
-Class Distribution: Analyzed the distribution of spam vs. ham messages, revealing an imbalanced dataset (approximately 87% ham, 13% spam).
+Class Distribution: The distribution of spam versus ham messages was analyzed, revealing an imbalanced dataset (approximately 87% ham, 13% spam).
 
-Feature Engineering: Created new features to better understand the data, such as:
+Feature Engineering: New features were created to better understand the data, including the number of characters, words, and sentences.
 
-Number of characters
-
-Number of words
-
-Number of sentences
-
-Visual Analysis: Plotted histograms and generated word clouds for both spam and ham messages. Key insights included:
-
-Spam messages generally contain more characters and words.
-
-Words like "free," "win," "claim," "prize," and "urgent" were highly frequent in spam messages.
+Visual Analysis: Histograms and word clouds were generated for both spam and ham messages. Key insights included that spam messages generally contain more characters and words, with words like "free," "win," "claim," "prize," and "urgent" being highly frequent.
 
 ### 3. Text Preprocessing
-A comprehensive preprocessing pipeline was created to transform raw text data into a clean, machine-readable format. The steps included:
+A comprehensive preprocessing pipeline was implemented to transform raw text data into a clean, machine-readable format. This involved:
 
-Lowercasing: Converted all text to lowercase.
+Lowercasing: All text was converted to lowercase.
 
-Tokenization: Broke down sentences into individual words (tokens).
+Tokenization: Sentences were broken down into individual words (tokens).
 
-Special Character Removal: Filtered out non-alphanumeric characters.
+Special Character Removal: Non-alphanumeric characters were filtered out.
 
-Stopword & Punctuation Removal: Eliminated common English stopwords (e.g., 'the', 'a', 'in') and punctuation.
+Stopword & Punctuation Removal: Common English stopwords and punctuation were eliminated.
 
-Stemming: Reduced words to their root form (e.g., 'dancing' -> 'danc') using the Porter Stemmer.
+Stemming: Words were reduced to their root form using the Porter Stemmer.
 
 ### 4. Model Building
-Vectorization: Used the TF-IDF (Term Frequency-Inverse Document Frequency) technique to convert the preprocessed text into numerical feature vectors, limiting the features to the top 3000 most frequent words.
+Vectorization: The TF-IDF (Term Frequency-Inverse Document Frequency) technique was used to convert the preprocessed text into numerical feature vectors, limited to the top 3000 most frequent words.
 
-Model Comparison: Trained and evaluated eleven different classification algorithms to find the best performer for this task, including:
-
-Naive Bayes (Gaussian, Multinomial, Bernoulli)
-
-Logistic Regression
-
-Support Vector Machine (SVC)
-
-K-Nearest Neighbors (KNN)
-
-Decision Tree & Random Forest
-
-Ensemble methods like AdaBoost, Bagging, and Gradient Boosting
+Model Comparison: Eleven different classification algorithms were trained and evaluated to identify the best performer, including Naive Bayes, Logistic Regression, Support Vector Machine (SVC), K-Nearest Neighbors (KNN), Decision Tree, Random Forest, and various ensemble methods.
 
 ## 🏆 Model Selection and Performance
-After a thorough comparison of all models, the Multinomial Naive Bayes (MNB) classifier was selected. It provided an excellent balance of high accuracy and perfect precision, which is crucial for a spam classifier (minimizing the chance of incorrectly classifying a legitimate message as spam).
+After a thorough comparison, the Multinomial Naive Bayes (MNB) classifier was selected for its high accuracy and perfect precision, which is crucial for minimizing the misclassification of legitimate messages as spam.
 
-The performance of the selected MNB model on the test dataset was:
+The performance of the MNB model on the test dataset was as follows:
 
-Metric	Score
-Accuracy	97.10%
+### Metric	Score
+Accuracy	97.10% <br>
 Precision	1.00
 
 Export to Sheets
-Confusion Matrix:
+### Confusion Matrix:
 
-[[896   0]
- [ 30 108]]
-True Negatives (Ham correctly identified): 896
+[[896   0] <br>
+ [ 30 108]] <br> <br> <br>
+True Negatives: 896 (Ham correctly identified)
 
-False Positives (Ham incorrectly marked as Spam): 0
+False Positives: 0 (Ham incorrectly marked as Spam)
 
-False Negatives (Spam incorrectly marked as Ham): 30
+False Negatives: 30 (Spam incorrectly marked as Ham)
 
-True Positives (Spam correctly identified): 108
+True Positives: 108 (Spam correctly identified)
 
-The Precision score of 1.0 is particularly noteworthy, as it means that out of all the messages the model predicted as spam, 100% were actually spam.
+The Precision score of 1.0 indicates that 100% of the messages predicted as spam were indeed spam.
 
 ## 💻 Technologies & Libraries Used
 Language: Python 3
@@ -116,54 +102,57 @@ Text Processing: NLTK (Natural Language Toolkit)
 
 Machine Learning: Scikit-learn, XGBoost
 
-Web App: Streamlit
+## Web App: Streamlit
 
-## 🚀 Setup and Usage
+🚀 Setup and Usage
 To run this project on your local machine, follow these steps:
 
-Clone the Repository
+### Clone the Repository:
 
 Bash
 
-git clone https://github.com/your-username/spam-classifier.git
-cd spam-classifier
-Create a Virtual Environment
+git clone https://github.com/afadnan/emailSpamClassification <br>
+cd emailSpamClassification <br>
+Create a Virtual Environment: <br>
 
 Bash
 
-python -m venv venv
-source venv/bin/activate  # On Windows, use `venv\Scripts\activate`
-Install Dependencies
-Create a requirements.txt file with the following content:
+conda create  -p venvspam python==3.12 <br>
+source venv/bin/activate  <br> 
+On Windows, use `venv\Scripts\activate` <br>
+Install Dependencies: <br>
+Create a requirements.txt file with the following content: <br>
 
-pandas
-numpy
-matplotlib
-seaborn
-scikit-learn
-streamlit
-nltk
-wordcloud
-xgboost
+ipykernel==6.30.1  <br>
+pandas==2.3.1 <br>
+numpy==2.3.1 <br>
+matplotlib==3.10.3 <br>
+seaborn==0.13.2 <br>
+scikit-learn==1.7.1 <br>
+streamlit==1.47.1 <br>
+nltk==3.9.1 <br>
+wordcloud==1.9.4 <br>
+xgboost==3.0.3 <br>
+
 Then, install the libraries:
 
 Bash
 
-pip install -r requirements.txt
-Download NLTK Data
-Run the following command in a Python interpreter to download the necessary NLTK packages:
+pip install -r requirements.txt <br>
+Download NLTK Data: <br>
+Run the following command in a Python interpreter to download the necessary NLTK packages: <br>
 
 Python
 
-import nltk
-nltk.download('punkt')
-nltk.download('stopwords')
-Run the Streamlit App
+import nltk <br>
+nltk.download('punkt') <br>
+nltk.download('stopwords') <br>
+Run the Streamlit App: <br>
 
 Bash
 
-streamlit run app.py
+streamlit run app.py <br>
 Open your web browser and navigate to the local URL provided by Streamlit (usually http://localhost:8501).
 
 ## 🤝 How to Contribute
-Contributions, issues, and feature requests are welcome! If you have suggestions for improvement, please feel free to open an issue or submit a pull request on GitHub.
+Contributions, issues, and feature requests are welcome! If you have suggestions for improvement, please open an issue or submit a pull request on GitHub.
