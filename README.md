@@ -154,5 +154,9 @@ Bash
 streamlit run app.py <br>
 Open your web browser and navigate to the local URL provided by Streamlit (usually http://localhost:8501).
 
+## 🖼️ Application Showcase
+
+The following screenshots provide a visual tour of the application's user interface and functionality. They serve as a quick preview for those who may not run the live demo.
+
 ## 🤝 How to Contribute
 Contributions, issues, and feature requests are welcome! If you have suggestions for improvement, please open an issue or submit a pull request on GitHub.
