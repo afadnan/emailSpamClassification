@@ -158,5 +158,15 @@ Open your web browser and navigate to the local URL provided by Streamlit (usual
 
 The following screenshots provide a visual tour of the application's user interface and functionality. They serve as a quick preview for those who may not run the live demo.
 
+This shows the main interface with all the input fields a user can configure to specify their desired laptop.
+
+
+![demo](image/homePage.png)
+
+Example Prediction Result
+This screenshot captures the application after a user has entered their specifications and received a price prediction from the model.
+
+![demo](image/response.png)
+
 ## 🤝 How to Contribute
 Contributions, issues, and feature requests are welcome! If you have suggestions for improvement, please open an issue or submit a pull request on GitHub.
