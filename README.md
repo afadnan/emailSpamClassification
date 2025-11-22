@@ -1,5 +1,5 @@
 # Email Spam Classifier 📧
-The Email/SMS Spam Classifier is a machine learning project designed to categorize text messages as either Spam or Not Spam. It utilizes a Multinomial Naive Bayes model and features a Streamlit-based web interface for real-time predictions. The project includes a Jupyter Notebook that details the data analysis, model training, and evaluation processes.
+The Email Spam Classifier is a machine learning project designed to categorize text messages as either Spam or Not Spam. It utilizes a Multinomial Naive Bayes model and features a Streamlit-based web interface for real-time predictions. The project includes a Jupyter Notebook that details the data analysis, model training, and evaluation processes.
 
 ## 🚀 Live Demo
 The most effective way to understand this project is to interact with it directly. The application is deployed and publicly accessible.
